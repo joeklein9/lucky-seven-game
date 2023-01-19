@@ -146,3 +146,8 @@ h1 {
 .final-results-message {
      padding:10px; 
 }
+
+#banks-counter {
+    padding:20px;
+    text-align: center;
+}

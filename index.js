@@ -11,6 +11,7 @@ const bankedPointsContainer = document.getElementById("banked-points-container")
 const bonusTokenContainer = document.getElementById("bonus-token-container")
 const finalResultsMessage = document.getElementById("final-results-message")
 const playAgainBtn = document.getElementById("play-again")
+const banksCounter = document.getElementById("banks-counter")
 
 let diceOneValue = 0
 let diceTwoValue = 0
@@ -20,6 +21,7 @@ let bankedPointsArray = []
 let bonusTokenArray = []
 let bankedPointSum = 0
 let isBusted = false
+let bankBtnClicks = 0
 
 rollBtn.disabled = false
 bankBtn.disabled = false
@@ -112,6 +114,11 @@ bankBtn.addEventListener("click", function (){
     displayBonusTokens()
     pointTokenValueArray = []
     displayPointTokenValueArray()
+    bankBtnClicks += 1
+    if (bankBtnClicks === 5) {
+        bankBtn.disabled = true
+    }
+    banksCounter.textContent = `Banks used (out of 5): ${bankBtnClicks}`
     
 })
 
@@ -195,6 +202,9 @@ playAgainBtn.addEventListener("click", function (){
     sumResult.textContent = "-"
     rollBtn.disabled = false
     bankBtn.disabled = false
+    bankBtnClicks = 0
+    banksCounter.textContent = `Banks used (out of 5): ${bankBtnClicks}`
     
    
 })
+
